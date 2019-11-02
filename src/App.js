@@ -1,25 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: Arial;
+  }
+`;
+
+const Wrapper = styled.section`
+  font-family: Arial;
+  padding: 4em;
+  background: papayawhip;
+`;
+
+const Button = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => props.primary ? "darkseagreen" : "white"};
+  color: ${props => props.primary ? "white" : "darkseagreen"};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid darkseagreen;
+  border-radius: 3px;
+`;
+
+const Title = styled.h1`
+  font-size: 3.5em;
+  color: darkseagreen;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Wrapper>
+        <Title>Título da página</Title>
+        <Button>Normal</Button>
+        <Button primary>Primary</Button>
+      </Wrapper>
+      <GlobalStyle/>
+    </React.Fragment>
   );
 }
 
